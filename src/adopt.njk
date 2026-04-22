@@ -1,0 +1,112 @@
+---
+layout: layouts/base.njk
+title: Adopt & Foster
+description: Adopt or foster a dog or cat from SARA Sanctuary. Our process, fees, and how to get started.
+permalink: /adopt/
+---
+
+<header class="page-head photo-head" style="background-image: url('/images/adoptable.webp');">
+  <div class="container">
+    <span class="eyebrow">Adopt &amp; Foster</span>
+    <h1>Find a friend for life. Or save one for now.</h1>
+    <p>Two ways to change an animal's trajectory: give them a forever home, or give them a safe landing spot until one shows up.</p>
+  </div>
+</header>
+
+<section>
+  <div class="container">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+      <a href="#adopt" class="card rust" style="text-align: center; text-decoration: none;"><h3 style="color: var(--cream); margin-bottom: 0;">Adopt a Dog or Cat &rarr;</h3></a>
+      <a href="#foster" class="card dark" style="text-align: center; text-decoration: none;"><h3 style="color: var(--cream); margin-bottom: 0;">Foster a Dog or Cat &rarr;</h3></a>
+    </div>
+  </div>
+</section>
+
+<section id="adopt" style="background: var(--cream-2); padding-top: 3rem;">
+  <div class="container">
+    <div class="prose">
+      <span class="eyebrow">Adopt</span>
+      <h2>SARA Adoptables</h2>
+      <p class="lede">Dog and cat adoption. Start here.</p>
+
+      <h3>Our Adoption Process</h3>
+      <ol>
+        <li>Choose a dog or cat that fits your situation.</li>
+        <li>Complete an adoption application using the links below.</li>
+        <li>SARA contacts you by email or phone within 24 to 48 hours.</li>
+        <li>Visits are arranged by appointment only.</li>
+        <li>Meet &amp; greet with dogs and cats.</li>
+        <li>Sign an agreement for your new friend for life.</li>
+      </ol>
+
+      <div class="info-grid">
+        <div class="info-box">
+          <div class="k">Adoption Fee</div>
+          <div class="v">$200 per animal</div>
+        </div>
+        <div class="info-box">
+          <div class="k">Adoption Contact</div>
+          <div class="v"><a href="mailto:{{ site.emails.adoption }}">{{ site.emails.adoption }}</a></div>
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1rem;">
+        <a href="{{ site.links.dogAdopt }}" target="_blank" rel="noopener" class="btn btn-primary">Dog Adoption Application &rarr;</a>
+        <a href="{{ site.links.catAdopt }}" target="_blank" rel="noopener" class="btn btn-forest">Cat Adoption Application &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="foster">
+  <div class="container">
+    <div class="prose">
+      <span class="eyebrow">Foster</span>
+      <h2>Foster a Dog or Cat</h2>
+
+      <h3>What is Fostering?</h3>
+      <p>Fostering is a temporary living situation for an animal at SARA while they're waiting for placement into a forever home.</p>
+
+      <h3>Why Foster?</h3>
+      <p>Foster families are a huge benefit for SARA's residents because they literally save lives. Having fosters step in and provide temporary homes frees up space for new animals to be welcomed into SARA.</p>
+      <p>Often, SARA receives animals who need special attention: they need medical care, they're too tiny to be left unattended, they can't reside with other animals, or they're traumatized from previous situations and need a quiet home to decompress. Other animals benefit from fostering as socialization that increases their adoptability.</p>
+      <p>Whatever the case, all of SARA's animals are promised safety and love from their foster families.</p>
+
+      <div class="callout">
+        <p class="mb-0"><strong>Fostering has its own rewards.</strong> Many fosters can't adopt due to time or living situations, so short-term fostering lets them enjoy animal companionship without the lifetime commitment. If you have the space and the desire, fostering might be for you.</p>
+      </div>
+
+      <h3>How Long is a Foster Commitment?</h3>
+      <p>Length of stay depends on the animal's unique situation and the marketing provided by the foster family and adoption counselor. Ideally, our foster animals remain with their foster family until they find their forever home. We understand life gets busy though: SARA will welcome the animal back any time if you're unable to continue caring for your foster friend.</p>
+
+      <h3>Steps to Becoming a Foster Parent</h3>
+      <ol>
+        <li>Fill out the application. If you're not sure which animal you'd like to foster, no big deal: our foster coordinator will help you figure out the best fit after your application is approved.</li>
+        <li>Application is reviewed and approved. We're focused on animal safety, so we'll conduct a phone call and schedule a virtual home visit.</li>
+        <li>Schedule a visit to SARA to meet your potential foster animal.</li>
+      </ol>
+
+      <p>For more information, please download the Foster Policy or email <a href="mailto:{{ site.emails.adoption }}">{{ site.emails.adoption }}</a>.</p>
+
+      <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.5rem;">
+        <a href="mailto:{{ site.emails.adoption }}" class="btn btn-primary">Email Our Foster Coordinator</a>
+        <a href="mailto:{{ site.emails.adoption }}?subject=Foster Policy Request" class="btn btn-ghost">Request Foster Policy</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-strip">
+  <div class="container">
+    <div class="cta-strip-grid">
+      <div>
+        <h2>Not ready to bring one home?</h2>
+        <p>Sponsoring an animal, donating, or volunteering are all powerful ways to help.</p>
+      </div>
+      <div class="btns">
+        <a href="/sponsor/" class="btn btn-primary">Sponsor</a>
+        <a href="/give/" class="btn btn-ghost">Donate</a>
+      </div>
+    </div>
+  </div>
+</section>

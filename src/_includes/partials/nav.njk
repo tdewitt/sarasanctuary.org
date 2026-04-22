@@ -1,0 +1,22 @@
+<div class="nav-wrap">
+  <nav class="nav">
+    <a href="/" class="brand">
+      <span class="brand-mark">S</span>
+      <span>SARA<small>Sanctuary</small></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="/" {% if page.url == "/" %}class="active"{% endif %}>Home</a></li>
+      <li><a href="/about/" {% if "/about/" in page.url %}class="active"{% endif %}>Our Story</a></li>
+      <li><a href="/adopt/" {% if "/adopt/" in page.url %}class="active"{% endif %}>Adopt &amp; Foster</a></li>
+      <li><a href="/give/" {% if "/give/" in page.url %}class="active"{% endif %}>Support</a></li>
+      <li><a href="/visit/" {% if "/visit/" in page.url %}class="active"{% endif %}>Stay</a></li>
+      <li><a href="/news/" {% if "/news/" in page.url or "/posts/" in page.url %}class="active"{% endif %}>News &amp; Events</a></li>
+      <li><a href="/tributes/" {% if "/tributes/" in page.url %}class="active"{% endif %}>Tributes</a></li>
+      <li><a href="/contact/" {% if "/contact/" in page.url %}class="active"{% endif %}>Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="/give/" class="btn btn-primary btn-sm">Donate</a>
+      <button class="nav-toggle" aria-label="Menu" onclick="document.getElementById('navLinks').classList.toggle('open')">&#9776;</button>
+    </div>
+  </nav>
+</div>

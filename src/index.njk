@@ -1,0 +1,161 @@
+---
+layout: layouts/base.njk
+title: Home
+description: Society for Animal Rescue & Adoption. 750+ rescued animals on 128 acres in Central Texas. Unconditional Life.
+permalink: /
+---
+
+<section class="hero">
+  <div class="hero-img" style="background-image: linear-gradient(180deg, rgba(31, 54, 42, 0.2) 0%, rgba(27, 24, 20, 0.85) 100%), url('/images/sanctuary-panoramic.webp');"></div>
+  <div class="hero-content">
+    <span class="eyebrow">{{ site.fullName }}</span>
+    <h1>{{ hero.headline or "Unconditional life for all animals." }}</h1>
+    <p>{{ hero.subhead or "Since 1996, SARA has grown into one of the largest sanctuaries in the world. 750 animals live here on 128 acres of Central Texas prairie, safe for the rest of their natural lives." }}</p>
+    <div class="hero-ctas">
+      <a href="/give/" class="btn btn-primary">Donate Today</a>
+      <a href="/about/" class="btn btn-ghost">Our Story</a>
+    </div>
+  </div>
+  <div class="hero-meta">Seguin, Texas &bull; Est. {{ site.founded }}</div>
+</section>
+
+<section class="stats tight">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat"><div class="num">{{ site.animalsInCare }}+</div><div class="label">Animals in Care</div></div>
+      <div class="stat"><div class="num">{{ site.acres }}</div><div class="label">Acres of Sanctuary</div></div>
+      <div class="stat"><div class="num">{{ 2026 - site.founded }}</div><div class="label">Years of Rescue</div></div>
+      <div class="stat"><div class="num">501(c)(3)</div><div class="label">Nonprofit Status</div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="two-col">
+      <div>
+        <span class="eyebrow">Our Mission</span>
+        <h2>Every animal deserves a safe place to land.</h2>
+        <p class="lede">SARA seeks to save as many animals as possible regardless of species, special health needs, or temperament. When outside adoption is not possible, our animals live with us for the duration of their natural lives.</p>
+        <p>Euthanasia is only employed in the true sense of the word: when an animal is suffering with no chance for recovery. No animal is ever killed for convenience.</p>
+        <a href="/about/" class="btn btn-ghost mt-2">Learn more about SARA</a>
+      </div>
+      <div class="img" style="background: url('/images/sanctuary-july-2025.webp') center/cover;"></div>
+    </div>
+  </div>
+</section>
+
+{% set latestPosts = collections.posts | reverse | slice(3) %}
+{% if collections.posts and collections.posts.length > 0 %}
+<section style="background: var(--cream-2);">
+  <div class="container">
+    <div style="display: flex; justify-content: space-between; align-items: end; flex-wrap: wrap; gap: 1rem;">
+      <div>
+        <span class="eyebrow">From the Sanctuary</span>
+        <h2>Latest news</h2>
+      </div>
+      <a href="/news/" class="btn btn-ghost">All news &rarr;</a>
+    </div>
+
+    <div class="feature-grid">
+      {% for post in collections.posts | slice(0, 3) %}
+      <article class="card" style="padding: 0; overflow: hidden;">
+        {% if post.data.image %}
+        <div style="aspect-ratio: 16/10; background: url('{{ post.data.image }}') center/cover;"></div>
+        {% endif %}
+        <div style="padding: 1.5rem;">
+          <span style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); font-weight: 600;">{{ post.date | readableDate }}</span>
+          <h3 style="margin: 0.4rem 0 0.5rem;"><a href="{{ post.url }}" style="color: inherit;">{{ post.data.title }}</a></h3>
+          <p class="muted">{{ post.data.excerpt }}</p>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<section>
+  <div class="container">
+    <div class="center" style="max-width: 600px; margin: 0 auto 1rem;">
+      <span class="eyebrow">Help Us Help Them</span>
+      <h2>Make a difference in the lives of our residents</h2>
+      <p class="muted">Compassionate action takes many forms. Pick the one that fits your life.</p>
+    </div>
+
+    <div class="feature-grid">
+      <a href="/give/" class="card" style="text-decoration: none; color: inherit;">
+        <div class="card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></div>
+        <h3>Donate</h3>
+        <p>One-time or monthly gifts that cover feed, vet care, and the unexpected.</p>
+      </a>
+      <a href="/adopt/" class="card" style="text-decoration: none; color: inherit;">
+        <div class="card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></div>
+        <h3>Adopt or Foster</h3>
+        <p>Give a dog or cat a forever home, or a temporary safe landing spot.</p>
+      </a>
+      <a href="/sponsor/" class="card" style="text-decoration: none; color: inherit;">
+        <div class="card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94A5.01 5.01 0 0010 15v2H7v2h10v-2h-3v-2a5.01 5.01 0 002.61-2.06C19.08 12.63 21 10.55 21 8V7c0-1.1-.9-2-2-2z"/></svg></div>
+        <h3>Sponsor an Animal</h3>
+        <p>Put a face and name on your support for our permanent residents.</p>
+      </a>
+      <a href="/give/#volunteer" class="card" style="text-decoration: none; color: inherit;">
+        <div class="card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg></div>
+        <h3>Volunteer</h3>
+        <p>Hands-on, direct care of our animals. Orientation the first Saturday of every month.</p>
+      </a>
+      <a href="/give/#wishlist" class="card" style="text-decoration: none; color: inherit;">
+        <div class="card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg></div>
+        <h3>Wish List</h3>
+        <p>Send the feed, supplies, and gear that keep the operation running.</p>
+      </a>
+      <a href="/give/#legacy" class="card" style="text-decoration: none; color: inherit;">
+        <div class="card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17 8C8 10 5.9 16.17 3.82 21h2.6c.47-1.2 1.02-2.35 1.58-3.17 1.56.96 3.29 1.5 5 1.5 5.52 0 10-4.48 10-10V2L17 8z"/></svg></div>
+        <h3>Planned Giving</h3>
+        <p>A lasting legacy of compassion through your will or estate.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="tight" style="background: var(--cream-2);">
+  <div class="container">
+    <div class="two-col reverse">
+      <div>
+        <span class="eyebrow">Unplug. Pause. Stay.</span>
+        <h2>Wake up surrounded by 750 rescue animals.</h2>
+        <p>Our red barn bunkhouse offers panoramic Texas views, a cozy loft, and a front-row seat to something meaningful. Help with chores, spot wildlife, or just watch the sun go down.</p>
+        <a href="/visit/" class="btn btn-forest">Book a Stay</a>
+      </div>
+      <div class="img" style="background: url('/images/bunkhouse-1.webp') center/cover;"></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-strip">
+  <div class="container">
+    <div class="cta-strip-grid">
+      <div>
+        <h2>A single dog or cat costs us $1,500 a year.</h2>
+        <p>Supporting larger farm animals like donkeys, horses, and alpacas costs thousands. Your monthly support keeps this place running.</p>
+      </div>
+      <div class="btns">
+        <a href="/give/" class="btn btn-primary">Donate</a>
+        <a href="/sponsor/" class="btn btn-ghost">Sponsor</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="newsletter">
+  <div class="container">
+    <span class="eyebrow">Stay in Touch</span>
+    <h2>Sign up for SARA updates</h2>
+    <p>Stories from the sanctuary, new residents, events, and the occasional request for help.</p>
+    <form netlify name="newsletter" action="/thanks/" method="POST">
+      <label for="newsletter-email" class="sr-only">Email address</label>
+      <input id="newsletter-email" type="email" name="email" placeholder="you@example.com" required autocomplete="email">
+      <button type="submit" class="btn btn-primary">Subscribe</button>
+    </form>
+  </div>
+</section>

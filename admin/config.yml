@@ -1,0 +1,89 @@
+# Decap CMS config for SARA Sanctuary
+# Docs: https://decapcms.org/docs/configuration-options/
+
+backend:
+  name: git-gateway
+  branch: main
+
+# Where new media is uploaded
+media_folder: "src/images/uploads"
+public_folder: "/images/uploads"
+
+# Show the editorial workflow (drafts, review, publish)
+publish_mode: simple
+
+site_url: https://www.sarasanctuary.org
+display_url: https://www.sarasanctuary.org
+logo_url: https://images.squarespace-cdn.com/content/v1/693edacf65f4ed0e3a334bd7/5bb33fbc-640a-4050-bb29-840074535bc0/barn.png
+
+collections:
+  - name: "posts"
+    label: "News Posts"
+    label_singular: "News Post"
+    folder: "src/posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{title}} — {{date | date('YYYY-MM-DD')}}"
+    sortable_fields: ['date', 'title']
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options: ["Announcements", "Campaigns", "In the Media", "Animal Stories", "Events", "Other"]
+        default: "Announcements"
+      - { label: "Author", name: "author", widget: "string", default: "SARA Team", required: false }
+      - { label: "Featured Image", name: "image", widget: "image", required: false }
+      - { label: "Image Alt Text", name: "imageAlt", widget: "string", required: false }
+      - { label: "Excerpt (shown on listing)", name: "excerpt", widget: "text" }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "events"
+    label: "Events"
+    label_singular: "Event"
+    folder: "src/events"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{title}} — {{date | date('YYYY-MM-DD')}}"
+    sortable_fields: ['date', 'title']
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "Time", name: "time", widget: "string", hint: "e.g., 11:00 AM – 2:00 PM" }
+      - { label: "Location", name: "location", widget: "string", default: "SARA Sanctuary, Seguin TX", required: false }
+      - { label: "RSVP Link", name: "rsvp", widget: "string", required: false, hint: "URL or mailto: link" }
+      - { label: "Excerpt", name: "excerpt", widget: "text" }
+      - { label: "Body (optional)", name: "body", widget: "markdown", required: false }
+
+  - name: "tributes"
+    label: "Tributes"
+    label_singular: "Tribute"
+    folder: "src/tributes"
+    create: true
+    slug: "{{slug}}"
+    summary: "{{name}}"
+    sortable_fields: ['date', 'name']
+    fields:
+      - { label: "Name", name: "name", widget: "string", hint: "Animal or person being honored" }
+      - { label: "Years / Dates", name: "years", widget: "string", required: false, hint: "e.g., 2009 – Present, or d. May 2024" }
+      - label: "Relation"
+        name: "relation"
+        widget: "select"
+        options: ["In Memory", "In Honor", "Permanent Resident", "Beloved Adopted Dog", "Beloved Adopted Cat", "Sanctuary Favorite", "Other"]
+        default: "In Memory"
+      - { label: "Date Posted", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "Photo", name: "image", widget: "image", required: false }
+      - { label: "Submitted By", name: "submittedBy", widget: "string", required: false }
+      - { label: "Submission Date (display)", name: "submittedDate", widget: "string", required: false, hint: "e.g., September 5, 2025" }
+      - { label: "Tribute Text", name: "body", widget: "markdown" }
+
+  - name: "pages"
+    label: "Pages"
+    files:
+      - label: "Site Settings"
+        name: "site"
+        file: "src/_data/site.js"
+        editor: { preview: false }
+        fields:
+          - { label: "Note", name: "note", widget: "string", default: "This file is edited in the git repo directly. Ask Tucker before changes.", required: false }

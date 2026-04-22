@@ -1,0 +1,23 @@
+[build]
+  command   = "npm run build"
+  publish   = "_site"
+
+[build.environment]
+  NODE_VERSION = "24"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options      = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy      = "strict-origin-when-cross-origin"
+
+[[redirects]]
+  from   = "/shop"
+  to     = "https://www.bonfire.com/store/sara-sanctuary/"
+  status = 302
+
+[[redirects]]
+  from   = "/book"
+  to     = "https://vegvisits.com/"
+  status = 302

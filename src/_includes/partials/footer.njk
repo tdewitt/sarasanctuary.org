@@ -1,0 +1,45 @@
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <span class="brand-mark">S</span>
+          <span>{{ site.name }}</span>
+        </div>
+        <p class="footer-about">{{ site.fullName }}. A 501(c)(3) nonprofit providing unconditional life for all animals since {{ site.founded }}. DLN {{ site.ein }}.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="/about/">Our Story</a></li>
+          <li><a href="/adopt/">Adopt &amp; Foster</a></li>
+          <li><a href="/sponsor/">Sponsor</a></li>
+          <li><a href="/visit/">Book a Stay</a></li>
+          <li><a href="/news/">News &amp; Events</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <ul>
+          <li><a href="/give/">Donate</a></li>
+          <li><a href="/give/#wishlist">Wish List</a></li>
+          <li><a href="/give/#legacy">Planned Giving</a></li>
+          <li><a href="/tributes/">Tributes</a></li>
+          <li><a href="{{ site.links.shop }}" target="_blank" rel="noopener">Shop Merch</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li>{{ site.address.line1 }}<br>{{ site.address.city }}, {{ site.address.state }} {{ site.address.zip }}</li>
+          <li>{{ site.phone }}</li>
+          <li><a href="mailto:{{ site.emails.general }}">{{ site.emails.general }}</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>&copy; {% currentYear %} {{ site.name }}. All rights reserved.</div>
+      <div>501(c)(3) Nonprofit &bull; DLN {{ site.ein }}</div>
+    </div>
+  </div>
+</footer>

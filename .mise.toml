@@ -1,0 +1,14 @@
+[tools]
+node = "24"
+
+[tasks.dev]
+run = "npm run dev"
+description = "Start Eleventy dev server"
+
+[tasks.build]
+run = "npm run build"
+description = "Build for production"
+
+[tasks.clean]
+run = "rm -rf _site .cache node_modules"
+description = "Nuke build artifacts and deps"

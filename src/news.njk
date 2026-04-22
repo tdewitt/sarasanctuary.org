@@ -1,0 +1,108 @@
+---
+layout: layouts/base.njk
+title: News & Events
+description: Stories from SARA Sanctuary, upcoming events, and updates on the animals. Volunteer orientations are held the first Saturday of every month.
+permalink: /news/
+---
+
+<header class="page-head photo-head" style="background-image: url('/images/ducks.webp');">
+  <div class="container">
+    <span class="eyebrow">News &amp; Events</span>
+    <h1>Stories from the sanctuary.</h1>
+    <p>Updates, events, media features, and the occasional request for help. Written by the people doing the work.</p>
+  </div>
+</header>
+
+{% set upcomingEvents = collections.events | selectattr("date") %}
+{% if collections.events and collections.events.length > 0 %}
+<section>
+  <div class="container">
+    <div style="display: flex; justify-content: space-between; align-items: end; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+      <div>
+        <span class="eyebrow">Upcoming</span>
+        <h2>Events &amp; orientations</h2>
+      </div>
+    </div>
+
+    <div class="feature-grid">
+      {% for event in collections.events %}
+      <article class="card" style="display: flex; gap: 1.25rem; align-items: flex-start;">
+        <div style="text-align: center; flex-shrink: 0; background: var(--rust); color: var(--cream); padding: 0.75rem 1rem; border-radius: var(--rad); min-width: 72px;">
+          <div style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em;">{{ event.date | shortMonth }}</div>
+          <div style="font-size: 1.8rem; font-weight: 700; line-height: 1;">{{ event.date | dayOfMonth }}</div>
+        </div>
+        <div>
+          <h3 style="margin: 0 0 0.25rem;">{{ event.data.title }}</h3>
+          <p class="muted" style="margin: 0 0 0.5rem;">{{ event.data.time }}{% if event.data.location %} &bull; {{ event.data.location }}{% endif %}</p>
+          <p style="margin: 0;">{{ event.data.excerpt }}</p>
+          {% if event.data.rsvp %}
+          <a href="{{ event.data.rsvp }}" class="btn btn-ghost btn-sm mt-2">RSVP &rarr;</a>
+          {% endif %}
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<section style="background: var(--cream-2);">
+  <div class="container">
+    <div style="display: flex; justify-content: space-between; align-items: end; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+      <div>
+        <span class="eyebrow">Latest</span>
+        <h2>From the sanctuary</h2>
+      </div>
+    </div>
+
+    {% if collections.posts and collections.posts.length > 0 %}
+    <div class="feature-grid">
+      {% for post in collections.posts %}
+      <article class="card" style="padding: 0; overflow: hidden;">
+        {% if post.data.image %}
+        <div style="aspect-ratio: 16/10; background: url('{{ post.data.image }}') center/cover;"></div>
+        {% endif %}
+        <div style="padding: 1.5rem;">
+          <span style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); font-weight: 600;">{{ post.date | readableDate }}{% if post.data.category %} &bull; {{ post.data.category }}{% endif %}</span>
+          <h3 style="margin: 0.4rem 0 0.5rem;"><a href="{{ post.url }}" style="color: inherit;">{{ post.data.title }}</a></h3>
+          <p class="muted">{{ post.data.excerpt }}</p>
+          <a href="{{ post.url }}" class="btn btn-ghost btn-sm mt-1">Read more &rarr;</a>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+    {% else %}
+    <p class="muted center">No posts yet. Check back soon.</p>
+    {% endif %}
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="prose">
+      <span class="eyebrow">In the Media</span>
+      <h2>SARA in the press</h2>
+      <p>SARA's residents have been featured nationally and in Texas press. A few of our favorites:</p>
+      <ul>
+        <li><strong>Newsweek</strong> &mdash; Dante, the dog who traveled from Lebanon to find a home after losing his leg.</li>
+        <li><strong>Newsweek</strong> &mdash; Gravey, rescued from a cemetery and given a new life at the sanctuary.</li>
+        <li><strong>Newsweek</strong> &mdash; Miss Bianca, the pug mom who arrived at SARA and never left.</li>
+        <li><strong>Spectrum News</strong> &mdash; A look inside one of the largest sanctuaries in the world.</li>
+        <li><strong>Texas Lifestyle Magazine</strong> &mdash; Our 128-acre sanctuary and the Central Texas community around it.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="newsletter">
+  <div class="container">
+    <span class="eyebrow">Stay in Touch</span>
+    <h2>Sign up for SARA updates</h2>
+    <p>Stories from the sanctuary, new residents, events, and the occasional request for help.</p>
+    <form netlify name="newsletter" action="/thanks/" method="POST">
+      <label for="newsletter-email" class="sr-only">Email address</label>
+      <input id="newsletter-email" type="email" name="email" placeholder="you@example.com" required autocomplete="email">
+      <button type="submit" class="btn btn-primary">Subscribe</button>
+    </form>
+  </div>
+</section>

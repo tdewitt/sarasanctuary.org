@@ -1,0 +1,77 @@
+---
+layout: layouts/base.njk
+title: Tributes
+description: Memorial and honorary tributes to animals and people loved by the SARA Sanctuary community. Honor a life with a gift to the sanctuary.
+permalink: /tributes/
+---
+
+<header class="page-head photo-head" style="background-image: url('/images/animals-landscape.webp');">
+  <div class="container">
+    <span class="eyebrow">Tributes</span>
+    <h1>In memory. In honor. In gratitude.</h1>
+    <p>A tribute is a meaningful way to remember an animal, a person, or a moment that mattered. Below are some of the tributes shared with us by the SARA community.</p>
+  </div>
+</header>
+
+<section>
+  <div class="container">
+    <div class="prose" style="margin-bottom: 3rem;">
+      <p class="lede">Make a tribute gift to honor someone special. We'll send a card and, if you'd like, add their name to this page.</p>
+      <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+        <a href="/give/" class="btn btn-primary">Make a Tribute Gift</a>
+        <a href="mailto:{{ site.emails.tracy }}" class="btn btn-ghost">Email Tracy</a>
+      </div>
+    </div>
+
+    {% if collections.tributes and collections.tributes.length > 0 %}
+    <div class="memorials">
+      {% for tribute in collections.tributes | reverse %}
+      <article class="memorial-entry">
+
+        {% set allImages = tribute.data.images if tribute.data.images else ([tribute.data.image] if tribute.data.image else []) %}
+
+        {% if allImages.length > 0 %}
+        <div class="memorial-photos{% if allImages.length == 1 %} single{% endif %}">
+          {% for img in allImages %}
+          <img src="{{ img }}" alt="{{ tribute.data.imageAlt or tribute.data.name }}" loading="lazy">
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        <div class="memorial-body">
+          {% if tribute.data.relation %}
+          <p class="memorial-relation">{{ tribute.data.relation }}</p>
+          {% endif %}
+          <h2 class="memorial-name">{{ tribute.data.name }}</h2>
+          {% if tribute.data.years %}
+          <p class="memorial-years">{{ tribute.data.years }}</p>
+          {% endif %}
+          <div class="memorial-text">{{ tribute.templateContent | safe }}</div>
+          {% if tribute.data.submittedBy %}
+          <p class="memorial-submitted">&mdash; {{ tribute.data.submittedBy }}{% if tribute.data.submittedDate %}, {{ tribute.data.submittedDate }}{% endif %}</p>
+          {% endif %}
+        </div>
+
+      </article>
+      {% endfor %}
+    </div>
+    {% else %}
+    <p class="muted center">Tributes will appear here as they're added.</p>
+    {% endif %}
+  </div>
+</section>
+
+<section class="cta-strip">
+  <div class="container">
+    <div class="cta-strip-grid">
+      <div>
+        <h2>Honor a life. Support a sanctuary.</h2>
+        <p>Every tribute gift directly supports the care of our 750 animals.</p>
+      </div>
+      <div class="btns">
+        <a href="/give/" class="btn btn-primary">Give a Tribute</a>
+        <a href="mailto:{{ site.emails.tracy }}" class="btn btn-ghost">Submit a Tribute</a>
+      </div>
+    </div>
+  </div>
+</section>

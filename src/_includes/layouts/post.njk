@@ -1,0 +1,26 @@
+---
+layout: layouts/base.njk
+---
+
+<header class="page-head">
+  <div class="container">
+    <span class="eyebrow">{{ category or "News" }}</span>
+    <h1>{{ title }}</h1>
+    <p>{{ date | readableDate }}{% if author %} &bull; {{ author }}{% endif %}</p>
+  </div>
+</header>
+
+<article>
+  <div class="container">
+    <div class="prose" style="margin: 0 auto;">
+      {% if image %}
+        <img src="{{ image }}" alt="{{ imageAlt or title }}" style="width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: var(--rad); margin-bottom: 2rem;">
+      {% endif %}
+      {{ content | safe }}
+    </div>
+
+    <div class="center" style="margin-top: 3rem;">
+      <a href="/news/" class="btn btn-ghost">&larr; Back to all news</a>
+    </div>
+  </div>
+</article>

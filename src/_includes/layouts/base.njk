@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% if title %}{{ title }} - {{ site.name }}{% else %}{{ site.name }} - {{ site.tagline }}{% endif %}</title>
+<meta name="description" content="{{ description or site.tagline }}">
+<meta property="og:title" content="{% if title %}{{ title }} – {{ site.name }}{% else %}{{ site.name }}{% endif %}">
+<meta property="og:description" content="{{ description or site.tagline }}">
+<meta property="og:image" content="{{ site.url }}/images/sanctuary-panoramic.webp">
+<meta property="og:type" content="website">
+<link rel="preload" as="image" href="/images/sanctuary-panoramic.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to content</a>
+
+{% include "partials/nav.njk" %}
+
+<main id="main-content">
+{{ content | safe }}
+</main>
+
+{% include "partials/footer.njk" %}
+
+<!-- Netlify Identity: enables editors to log into /admin/ from anywhere on the site -->
+<script defer src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<script>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", user => {
+      if (!user) {
+        window.netlifyIdentity.on("login", () => {
+          document.location.href = "/admin/";
+        });
+      }
+    });
+  }
+
+  document.addEventListener('click', function(e) {
+    var nav = document.getElementById('navLinks');
+    var toggle = document.querySelector('.nav-toggle');
+    if (nav && nav.classList.contains('open') && !nav.contains(e.target) && toggle && !toggle.contains(e.target)) {
+      nav.classList.remove('open');
+    }
+  });
+</script>
+
+</body>
+</html>

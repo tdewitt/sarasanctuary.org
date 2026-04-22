@@ -1,0 +1,14 @@
+{
+  "name": "sara-sanctuary",
+  "version": "1.0.0",
+  "description": "SARA Sanctuary website. Static site built with Eleventy, content-edited with Decap CMS.",
+  "private": true,
+  "scripts": {
+    "build": "eleventy",
+    "dev": "eleventy --serve --port=8080",
+    "debug": "DEBUG=Eleventy* eleventy"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.5"
+  }
+}

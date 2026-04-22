@@ -1,0 +1,181 @@
+---
+layout: layouts/base.njk
+title: Ways to Give
+description: Donate, volunteer, send items from our wish list, or leave a legacy gift. Every dollar and every hour helps SARA Sanctuary provide unconditional life for 750 rescued animals.
+permalink: /give/
+---
+
+<header class="page-head photo-head" style="background-image: url('/images/animals-landscape.webp');">
+  <div class="container">
+    <span class="eyebrow">Ways to Give</span>
+    <h1>Every dollar, every hour, every item helps.</h1>
+    <p>SARA runs on donations, volunteer labor, and the generosity of people who believe in unconditional life. Pick the way you want to help.</p>
+  </div>
+</header>
+
+<section class="tight">
+  <div class="container">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.75rem;">
+      <a href="#donate" class="card dark" style="text-align: center; text-decoration: none;"><h4 style="color: var(--cream); margin: 0;">Donate</h4></a>
+      <a href="#monthly" class="card dark" style="text-align: center; text-decoration: none;"><h4 style="color: var(--cream); margin: 0;">Monthly Giving</h4></a>
+      <a href="#wishlist" class="card dark" style="text-align: center; text-decoration: none;"><h4 style="color: var(--cream); margin: 0;">Wish List</h4></a>
+      <a href="#volunteer" class="card dark" style="text-align: center; text-decoration: none;"><h4 style="color: var(--cream); margin: 0;">Volunteer</h4></a>
+      <a href="#legacy" class="card dark" style="text-align: center; text-decoration: none;"><h4 style="color: var(--cream); margin: 0;">Planned Giving</h4></a>
+      <a href="#tributes" class="card dark" style="text-align: center; text-decoration: none;"><h4 style="color: var(--cream); margin: 0;">Tributes</h4></a>
+    </div>
+  </div>
+</section>
+
+<section id="donate" style="background: var(--cream-2);">
+  <div class="container">
+    <div class="prose">
+      <span class="eyebrow">Donate</span>
+      <h2>One-time gifts of any size.</h2>
+      <p class="lede">Every donation goes directly to feed, vet care, facility upkeep, and the medical needs of 750 animals who call SARA home.</p>
+
+      <div class="info-grid">
+        <div class="info-box">
+          <div class="k">Online</div>
+          <div class="v">PayPal, Venmo, credit/debit</div>
+        </div>
+        <div class="info-box">
+          <div class="k">Mail</div>
+          <div class="v">{{ site.address.mailing }}</div>
+        </div>
+        <div class="info-box">
+          <div class="k">Tax ID</div>
+          <div class="v">DLN {{ site.ein }}</div>
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.5rem;">
+        <a href="{{ site.links.paypal }}" target="_blank" rel="noopener" class="btn btn-primary">Donate via PayPal</a>
+        <a href="{{ site.links.venmo }}" target="_blank" rel="noopener" class="btn btn-forest">Donate via Venmo</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="monthly">
+  <div class="container">
+    <div class="two-col">
+      <div>
+        <span class="eyebrow">Monthly Giving</span>
+        <h2>Recurring gifts are the backbone of sanctuary life.</h2>
+        <p>A single dog or cat costs us about $1,500 a year. Horses, donkeys, and alpacas cost several times that. Monthly donors provide the stable, predictable income we need to keep the lights on and the feed trucks rolling.</p>
+        <p>Start at any amount. Change or cancel any time.</p>
+        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1rem;">
+          <a href="{{ site.links.paypal }}" target="_blank" rel="noopener" class="btn btn-primary">Start Monthly Gift</a>
+          <a href="{{ site.links.patreon }}" target="_blank" rel="noopener" class="btn btn-ghost">Support on Patreon</a>
+        </div>
+      </div>
+      <div class="img" style="background: url('/images/horses.webp') center/cover;"></div>
+    </div>
+  </div>
+</section>
+
+<section id="wishlist" style="background: var(--cream-2);">
+  <div class="container">
+    <div class="prose">
+      <span class="eyebrow">Wish List</span>
+      <h2>Send feed, supplies, and gear.</h2>
+      <p>Ship directly to the sanctuary. The items below are always needed and always in short supply.</p>
+
+      <ul>
+        <li>Dog and cat food (dry and wet)</li>
+        <li>Horse and donkey feed, hay</li>
+        <li>Chicken scratch and layer feed</li>
+        <li>Cleaning supplies: bleach, laundry detergent, dish soap</li>
+        <li>Paper towels, trash bags (contractor grade)</li>
+        <li>Flea/tick preventatives</li>
+        <li>Leashes, collars, crates</li>
+        <li>Blankets, towels, beds</li>
+        <li>Office supplies: printer paper, envelopes, stamps</li>
+      </ul>
+
+      <div class="info-grid" style="margin-top: 1.5rem;">
+        <div class="info-box">
+          <div class="k">Ship To</div>
+          <div class="v">{{ site.address.line1 }}<br>{{ site.address.city }}, {{ site.address.state }} {{ site.address.zip }}</div>
+        </div>
+        <div class="info-box">
+          <div class="k">Questions</div>
+          <div class="v"><a href="mailto:{{ site.emails.general }}">{{ site.emails.general }}</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="volunteer">
+  <div class="container">
+    <div class="two-col reverse">
+      <div>
+        <span class="eyebrow">Volunteer</span>
+        <h2>Hands-on work. Real impact.</h2>
+        <p>Volunteering at SARA is direct, physical, and meaningful. You'll walk dogs, socialize cats, muck stalls, feed animals, and help us keep 128 acres of sanctuary running.</p>
+        <p><strong>Orientation is held the first Saturday of every month</strong> and is required for new volunteers. Bring water, close-toed shoes, and clothes you don't mind getting dirty.</p>
+        <div class="info-grid">
+          <div class="info-box">
+            <div class="k">Contact</div>
+            <div class="v"><a href="mailto:{{ site.emails.volunteer }}">{{ site.emails.volunteer }}</a></div>
+          </div>
+          <div class="info-box">
+            <div class="k">Minimum Age</div>
+            <div class="v">16 (14 with a parent)</div>
+          </div>
+        </div>
+        <a href="mailto:{{ site.emails.volunteer }}" class="btn btn-primary mt-2">Sign Up to Volunteer</a>
+      </div>
+      <div class="img" style="background: url('/images/volunteers.webp') center/cover;"></div>
+    </div>
+  </div>
+</section>
+
+<section id="legacy" style="background: var(--cream-2);">
+  <div class="container">
+    <div class="prose">
+      <span class="eyebrow">Planned Giving</span>
+      <h2>Leave a legacy of compassion.</h2>
+      <p class="lede">Including SARA in your will, trust, or estate plan ensures the animals here have a home long after you're gone.</p>
+      <p>There are several ways to make a legacy gift:</p>
+      <ul>
+        <li><strong>Bequest in your will</strong> — a specific dollar amount, percentage, or residual estate gift</li>
+        <li><strong>Beneficiary designation</strong> — name SARA on retirement accounts, life insurance, or bank accounts</li>
+        <li><strong>Charitable trust</strong> — create an income stream for yourself and a lasting gift for the animals</li>
+        <li><strong>Gifts of stock or real estate</strong> — can provide significant tax advantages</li>
+      </ul>
+      <p>We recommend discussing any planned gift with your financial advisor or attorney. Our team is happy to work with them directly.</p>
+      <p><strong>Legal name:</strong> Society for Animal Rescue &amp; Adoption<br>
+      <strong>Tax ID (DLN):</strong> {{ site.ein }}</p>
+      <a href="mailto:{{ site.emails.tracy }}" class="btn btn-primary">Discuss Planned Giving</a>
+    </div>
+  </div>
+</section>
+
+<section id="tributes">
+  <div class="container">
+    <div class="prose">
+      <span class="eyebrow">Tributes</span>
+      <h2>Give in honor or memory of someone special.</h2>
+      <p>A tribute gift is a meaningful way to honor a loved one, a pet, a milestone, or someone's memory. We'll send a card to anyone you'd like, and your tribute can be posted to our <a href="/tributes/">Tributes wall</a>.</p>
+      <a href="/tributes/" class="btn btn-ghost">Read Tributes &rarr;</a>
+      <a href="mailto:{{ site.emails.tracy }}" class="btn btn-primary">Make a Tribute Gift</a>
+    </div>
+  </div>
+</section>
+
+<section class="cta-strip">
+  <div class="container">
+    <div class="cta-strip-grid">
+      <div>
+        <h2>Can't give money? Give time. Give feed. Give word-of-mouth.</h2>
+        <p>Every contribution matters. Every volunteer hour matters. Every social share matters.</p>
+      </div>
+      <div class="btns">
+        <a href="{{ site.links.facebook }}" target="_blank" rel="noopener" class="btn btn-primary">Follow Us</a>
+        <a href="{{ site.links.shop }}" target="_blank" rel="noopener" class="btn btn-ghost">Shop Merch</a>
+      </div>
+    </div>
+  </div>
+</section>
