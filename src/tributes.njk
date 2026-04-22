@@ -26,6 +26,7 @@ permalink: /tributes/
     {% if collections.tributes and collections.tributes.length > 0 %}
     <div class="memorials">
       {% for tribute in collections.tributes | reverse %}
+      {% if not tribute.data.kindWords %}
       <article class="memorial-entry{% if tribute.data.poem %} memorial-poem{% endif %}">
 
         {% set allImages = tribute.data.images if tribute.data.images else ([tribute.data.image] if tribute.data.image else []) %}
@@ -53,8 +54,27 @@ permalink: /tributes/
         </div>
 
       </article>
+      {% endif %}
       {% endfor %}
     </div>
+
+    {% set kindWordsEntry = null %}
+    {% for tribute in collections.tributes %}
+      {% if tribute.data.kindWords %}{% set kindWordsEntry = tribute %}{% endif %}
+    {% endfor %}
+
+    {% if kindWordsEntry %}
+    <div class="kind-words-section">
+      <div class="kind-words-header">
+        <h2>Kind Words</h2>
+        <p class="memorial-relation">Memorial Contributions</p>
+      </div>
+      <div class="kind-words-entries">
+        {{ kindWordsEntry.templateContent | safe }}
+      </div>
+    </div>
+    {% endif %}
+
     {% else %}
     <p class="muted center">Tributes will appear here as they're added.</p>
     {% endif %}
