@@ -833,7 +833,7 @@ footer li { margin-bottom: 0.5rem; font-size: 0.95rem; }
 }
 .memorial-photos img {
   border-radius: var(--rad);
-  border: 3px solid #f7f2e8;
+  border: 4px solid #e8dcc4;
   box-shadow:
     0 1px 2px rgba(40, 25, 10, 0.06),
     0 6px 20px rgba(40, 25, 10, 0.10),
@@ -967,8 +967,25 @@ footer li { margin-bottom: 0.5rem; font-size: 0.95rem; }
 /* ================================================================
    Scroll-driven reveals (CSS-native, Chrome/Edge/Safari 18+)
    JS IntersectionObserver is the fallback for Firefox.
-   @supports ensures no conflict between the two paths.
+   @keyframes must be top-level — nesting inside @supports breaks them.
 ================================================================ */
+
+@keyframes header-parallax {
+  from { background-position: center 45%; }
+  to   { background-position: center 62%; }
+}
+@keyframes memorial-enter {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes divider-draw {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+@keyframes kw-enter {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: none; }
+}
 
 /* Hero parallax — background drifts slower than page scroll */
 @supports (animation-timeline: scroll()) {
@@ -976,59 +993,42 @@ footer li { margin-bottom: 0.5rem; font-size: 0.95rem; }
     .photo-head {
       animation: header-parallax linear both;
       animation-timeline: scroll(root block);
-      animation-range: 0vh 100vh;
-    }
-    @keyframes header-parallax {
-      from { background-position: center 45%; }
-      to   { background-position: center 62%; }
+      animation-range: 0% 40%;
     }
   }
 }
 
-/* Entry reveals — photos animate in, then body text follows naturally
+/* Entry reveals — photos animate in, body text follows naturally
    (vertical position provides built-in stagger; no JS delay needed) */
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
     .memorial-entry .memorial-photos {
-      animation: memorial-enter 0.75s cubic-bezier(0.16, 1, 0.3, 1) both;
+      animation: memorial-enter 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
       animation-timeline: view(block);
-      animation-range: entry 0% entry 45%;
-    }
-    .memorial-entry .memorial-body {
-      animation: memorial-enter 0.75s cubic-bezier(0.16, 1, 0.3, 1) both;
-      animation-timeline: view(block);
-      animation-range: entry 5% entry 55%;
-    }
-    /* Entries with no photo: animate the body only */
-    .memorial-entry:not(:has(.memorial-photos)) .memorial-body {
       animation-range: entry 0% entry 50%;
     }
-    @keyframes memorial-enter {
-      from { opacity: 0; transform: translateY(14px); }
-      to   { opacity: 1; transform: none; }
+    .memorial-entry .memorial-body {
+      animation: memorial-enter 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+      animation-timeline: view(block);
+      animation-range: entry 5% entry 60%;
+    }
+    .memorial-entry:not(:has(.memorial-photos)) .memorial-body {
+      animation-range: entry 0% entry 55%;
     }
 
-    /* Divider draws from center as you read through each entry */
+    /* Divider draws from center as you finish reading each entry */
     .memorial-entry::after {
       transform-origin: center;
       animation: divider-draw 1s cubic-bezier(0.16, 1, 0.3, 1) both;
       animation-timeline: view(block);
       animation-range: entry 65% cover 25%;
     }
-    @keyframes divider-draw {
-      from { transform: scaleX(0); }
-      to   { transform: scaleX(1); }
-    }
 
-    /* Kind Words — each paragraph enters one at a time */
+    /* Kind Words — each paragraph enters individually */
     .kind-words-entries p {
       animation: kw-enter 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
       animation-timeline: view(block);
       animation-range: entry 0% entry 65%;
-    }
-    @keyframes kw-enter {
-      from { opacity: 0; transform: translateY(8px); }
-      to   { opacity: 1; transform: none; }
     }
   }
 }
