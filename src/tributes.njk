@@ -83,6 +83,10 @@ permalink: /tributes/
 
 <script>
 (function() {
+  // CSS scroll-driven animations handle reveals natively in Chrome/Edge/Safari 18+.
+  // Only run the IntersectionObserver fallback for browsers that need it (Firefox).
+  if (CSS && CSS.supports && CSS.supports('animation-timeline: view()')) return;
+
   var memorials = document.querySelector('.memorials');
   if (!memorials) return;
   memorials.classList.add('js-memorial');
