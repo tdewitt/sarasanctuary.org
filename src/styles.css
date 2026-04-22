@@ -831,7 +831,8 @@ footer li { margin-bottom: 0.5rem; font-size: 0.95rem; }
     0 2px 4px rgba(20, 15, 8, 0.10),
     0 10px 30px rgba(20, 15, 8, 0.14),
     0 28px 70px rgba(20, 15, 8, 0.10);
-  max-width: 100%;
+  width: auto;       /* never stretch to fill container */
+  max-width: 100%;   /* but don't overflow — scale down if needed */
   height: auto;
   display: block;
   /* Memories at rest: sepia-toned, waiting */
