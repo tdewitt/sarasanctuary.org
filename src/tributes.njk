@@ -26,7 +26,7 @@ permalink: /tributes/
     {% if collections.tributes and collections.tributes.length > 0 %}
     <div class="memorials">
       {% for tribute in collections.tributes | reverse %}
-      <article class="memorial-entry">
+      <article class="memorial-entry{% if tribute.data.poem %} memorial-poem{% endif %}">
 
         {% set allImages = tribute.data.images if tribute.data.images else ([tribute.data.image] if tribute.data.image else []) %}
 
@@ -60,6 +60,27 @@ permalink: /tributes/
     {% endif %}
   </div>
 </section>
+
+<script>
+(function() {
+  var memorials = document.querySelector('.memorials');
+  if (!memorials) return;
+  memorials.classList.add('js-memorial');
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduced) return;
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.04, rootMargin: '0px 0px -32px 0px' });
+  document.querySelectorAll('.memorial-entry').forEach(function(el) {
+    observer.observe(el);
+  });
+})();
+</script>
 
 <section class="cta-strip">
   <div class="container">

@@ -776,12 +776,40 @@ footer li { margin-bottom: 0.5rem; font-size: 0.95rem; }
   margin: 0 auto;
 }
 
+.js-memorial .memorial-entry {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.js-memorial .memorial-entry.is-visible {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .js-memorial .memorial-entry {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 .memorial-entry {
   padding: 4rem 0;
-  border-bottom: 1px solid var(--line);
+  position: relative;
+}
+.memorial-entry::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line) 30%, var(--line) 70%, transparent);
+}
+.memorial-entry:last-child::after {
+  display: none;
 }
 .memorial-entry:last-child {
-  border-bottom: none;
   padding-bottom: 0;
 }
 
@@ -798,6 +826,10 @@ footer li { margin-bottom: 0.5rem; font-size: 0.95rem; }
   max-width: 100%;
   height: auto;
   display: block;
+  transition: box-shadow 0.3s ease;
+}
+.memorial-photos img:hover {
+  box-shadow: 0 0 0 3px rgba(201, 90, 48, 0.12), var(--shadow-lg);
 }
 .memorial-photos.single img {
   max-width: 100%;
@@ -834,6 +866,20 @@ footer li { margin-bottom: 0.5rem; font-size: 0.95rem; }
 }
 .memorial-text p { margin-bottom: 0.75rem; }
 .memorial-text p:last-child { margin-bottom: 0; }
+
+.memorial-poem .memorial-text {
+  font-family: var(--display);
+  font-size: 1rem;
+  line-height: 2;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--ink);
+}
+.memorial-poem .memorial-text br {
+  content: "";
+  display: block;
+  margin-bottom: 0;
+}
 .memorial-submitted {
   margin-top: 1.5rem;
   font-style: italic;
